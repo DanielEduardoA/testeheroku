@@ -1,0 +1,29 @@
+#  Template maven-build
+
+#  This template allows you to test and build your Java project with Maven.
+#  The workflow allows running tests, code checkstyle and security scans on the default branch.
+
+# Prerequisites: pom.xml and appropriate project structure should exist in the repository.
+
+image: maven:3.6.3
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: Build and Test
+          caches:
+            - maven
+          script:
+            - mvn -B package
+          artifacts:
+            - target/**
+      - step:
+          name: Push docker image to Heroku
+          deployment: Production
+          services: docker
+          script:
+           - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+           - heroku container:login
+           - heroku container:push web -a $HEROKU_APP_NAME
+           - heroku container:release web -a $HEROKU_APP_NAME
