@@ -21,7 +21,8 @@ pipelines:
       - step:
           name: Push docker image to Heroku
           deployment: Production
-          services: docker
+          services:
+           - docker
           script:
            - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
            - heroku container:login
