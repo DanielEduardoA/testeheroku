@@ -1,7 +1,0 @@
-br\edu\univas\api\marvel\controller\CharactersController.class
-br\edu\univas\api\marvel\exception\MarvelApiExceptionHandler.class
-br\edu\univas\api\marvel\configuration\RestTemplateErrorHandler.class
-br\edu\univas\api\marvel\configuration\RestTemplateConfig.class
-br\edu\univas\api\marvel\service\CharactersService.class
-br\edu\univas\api\marvel\exception\MarvelApiException.class
-br\edu\univas\api\marvel\Application.class
